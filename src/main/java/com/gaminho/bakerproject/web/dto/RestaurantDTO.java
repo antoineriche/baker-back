@@ -1,16 +1,8 @@
-package com.gaminho.bakerproject.domain;
+package com.gaminho.bakerproject.web.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+public class RestaurantDTO {
 
-@Entity
-public class Restaurant {
-
-    @Id
-    @GeneratedValue
     private long id;
-
     private String name;
     private String address;
     private String mailAddress;
@@ -54,5 +46,16 @@ public class Restaurant {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "RestaurantDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", mailAddress='" + mailAddress + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
     }
 }
