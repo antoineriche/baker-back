@@ -52,4 +52,14 @@ public class Command {
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
     }
+
+    @Override
+    public String toString() {
+        return "Command{" +
+                "id=" + id +
+                ", date=" + date +
+                ", count=" + count +
+                ", restaurant=" + restaurant +
+                '}';
+    }
 }
