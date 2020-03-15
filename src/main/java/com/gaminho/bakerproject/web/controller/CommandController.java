@@ -49,8 +49,6 @@ public class CommandController {
             log.info("Getting all commands");
             commandList = commandService.getAllCommands();
         }
-        commandList.forEach(command -> log.debug("date: {}", command.getDate()));
-
 
         return ResponseEntity.ok(commandMapper.toDTOs(commandList));
     }
@@ -62,7 +60,18 @@ public class CommandController {
         if(optCommand.isPresent()) {
             return ResponseEntity.ok(commandMapper.toDTO(optCommand.get()));
         } else {
-            throw new IllegalArgumentException("Can not find command with id " + commandId);
+            throw new IllegalArgumentException("Can not find command with id: " + commandId);
+        }
+    }
+
+    @DeleteMapping("/{commandId}")
+    public ResponseEntity<?> deleteCommand(@PathVariable Long commandId) {
+        log.info("Deleting command: {}", commandId);
+        if(commandService.getCommand(commandId).isPresent()) {
+            commandService.deleteCommand(commandId);
+            return ResponseEntity.accepted().build();
+        } else {
+            return ResponseEntity.badRequest().body("Can not find command with id: " + commandId);
         }
     }
 
@@ -70,5 +79,16 @@ public class CommandController {
     public ResponseEntity<?> createCommand(@RequestBody CommandDTO commandDTO) {
         log.info("Creating command: {}", commandDTO);
         return ResponseEntity.ok(commandMapper.toDTO(commandService.saveNewCommand(commandDTO)));
+    }
+
+    @PutMapping("/{commandId}")
+    public ResponseEntity<?> updateCommand(@PathVariable Long commandId,
+                                           @RequestBody CommandDTO commandDTO) {
+        log.info("Updating command: {}", commandId);
+        if (commandService.getCommand(commandId).isPresent()) {
+            return ResponseEntity.ok(commandMapper.toDTO(commandService.updateCommand(commandDTO)));
+        } else {
+            return ResponseEntity.badRequest().body("Can not find command with id: " + commandId);
+        }
     }
 }

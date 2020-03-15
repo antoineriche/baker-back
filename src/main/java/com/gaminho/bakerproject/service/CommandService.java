@@ -47,6 +47,15 @@ public class CommandService {
         return commandRepository.save(command);
     }
 
+    public Command updateCommand(CommandDTO commandDTO) {
+        final Command command = commandMapper.toEntity(commandDTO);
+        return commandRepository.save(command);
+    }
+
+    public void deleteCommand(Long commandId) {
+        commandRepository.deleteById(commandId);
+    }
+
     public List<Command> findByDate(LocalDate date) {
         return commandRepository.findAllByDate(date);
     }

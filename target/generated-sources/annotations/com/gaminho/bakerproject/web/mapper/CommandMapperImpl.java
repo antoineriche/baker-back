@@ -3,13 +3,12 @@ package com.gaminho.bakerproject.web.mapper;
 import com.gaminho.bakerproject.domain.Command;
 import com.gaminho.bakerproject.domain.Restaurant;
 import com.gaminho.bakerproject.web.dto.CommandDTO;
-import java.time.format.DateTimeFormatter;
 import javax.annotation.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-03-15T15:26:52+0100",
+    date = "2020-03-15T21:01:35+0100",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 1.8.0_111 (Oracle Corporation)"
 )
 @Component
@@ -23,9 +22,7 @@ public class CommandMapperImpl implements CommandMapper {
 
         CommandDTO commandDTO = new CommandDTO();
 
-        if ( command.getDate() != null ) {
-            commandDTO.setDate( DateTimeFormatter.ofPattern( "yyyy-MM-dd" ).format( command.getDate() ) );
-        }
+        commandDTO.setDate( command.getDate() );
         commandDTO.setCount( command.getCount() );
         commandDTO.setId( command.getId() );
         long id = commandRestaurantId( command );
@@ -43,9 +40,7 @@ public class CommandMapperImpl implements CommandMapper {
         Command command = new Command();
 
         command.setRestaurant( commandDTOToRestaurant( commandDTO ) );
-        if ( commandDTO.getDate() != null ) {
-            command.setDate( java.time.LocalDate.parse( commandDTO.getDate(), DateTimeFormatter.ofPattern( "yyyy-MM-dd" ) ) );
-        }
+        command.setDate( commandDTO.getDate() );
         command.setCount( commandDTO.getCount() );
         command.setId( commandDTO.getId() );
 
