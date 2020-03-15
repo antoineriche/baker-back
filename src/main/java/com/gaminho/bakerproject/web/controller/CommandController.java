@@ -49,6 +49,9 @@ public class CommandController {
             log.info("Getting all commands");
             commandList = commandService.getAllCommands();
         }
+        commandList.forEach(command -> log.debug("date: {}", command.getDate()));
+
+
         return ResponseEntity.ok(commandMapper.toDTOs(commandList));
     }
 

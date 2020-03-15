@@ -31,7 +31,7 @@ public class CommandService {
     private RestaurantRepository restaurantRepository;
 
     public List<Command> getAllCommands() {
-        return commandRepository.findAll();
+        return commandRepository.findAllOrderByDateDesc();
     }
 
     public Optional<Command> getCommand(Long id) {
@@ -53,7 +53,7 @@ public class CommandService {
 
     public List<Command> findByRestaurant(Long restaurantId) {
         if (restaurantRepository.findById(restaurantId).isPresent()) {
-            return commandRepository.findAllByRestaurant_Id(restaurantId);
+            return commandRepository.findAllByRestaurant_IdOrderByDateDesc(restaurantId);
         } else {
             log.error("No restaurant found with id: {}", restaurantId);
             return Collections.emptyList();
@@ -62,7 +62,7 @@ public class CommandService {
 
     public List<Command> findByDateAndRestaurant(Long restaurantId, LocalDate date) {
         if (restaurantRepository.findById(restaurantId).isPresent()) {
-            return commandRepository.findAllByRestaurant_IdAndDate(restaurantId, date);
+            return commandRepository.findAllByRestaurant_IdAndDateOrderByDateDesc(restaurantId, date);
         } else {
             log.error("No restaurant found with id: {}", restaurantId);
             return Collections.emptyList();
