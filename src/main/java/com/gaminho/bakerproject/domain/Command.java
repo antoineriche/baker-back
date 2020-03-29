@@ -17,7 +17,7 @@ public class Command {
     private long count;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_restaurant", nullable = false)
+    @JoinColumn(name = "fk_restaurant", nullable = false)
     private Restaurant restaurant;
 
     public long getId() {
@@ -44,7 +44,7 @@ public class Command {
         this.count = count;
     }
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     public Restaurant getRestaurant() {
         return restaurant;
     }

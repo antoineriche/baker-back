@@ -1,7 +1,7 @@
-package com.gaminho.bakerproject.web.mapper;
+package com.gaminho.bakerproject.service.mapper;
 
 import com.gaminho.bakerproject.domain.Command;
-import com.gaminho.bakerproject.web.dto.CommandDTO;
+import com.gaminho.bakerproject.service.dto.CommandDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;

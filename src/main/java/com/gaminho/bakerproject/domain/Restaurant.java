@@ -1,8 +1,8 @@
 package com.gaminho.bakerproject.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Restaurant {
@@ -15,6 +15,10 @@ public class Restaurant {
     private String address;
     private String mailAddress;
     private String phone;
+    private String description;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @Joingit ;
 
     public long getId() {
         return id;
@@ -54,5 +58,21 @@ public class Restaurant {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Set<Command> getCommands() {
+        return commands;
+    }
+
+    public void setCommands(Set<Command> commands) {
+        this.commands = commands;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

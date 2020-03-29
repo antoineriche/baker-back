@@ -1,6 +1,4 @@
-package com.gaminho.bakerproject.web.dto;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
+package com.gaminho.bakerproject.service.dto;
 
 import java.time.LocalDate;
 

@@ -1,10 +1,11 @@
 package com.gaminho.bakerproject.service;
 
 import com.gaminho.bakerproject.domain.Command;
+import com.gaminho.bakerproject.domain.Restaurant;
 import com.gaminho.bakerproject.repository.CommandRepository;
 import com.gaminho.bakerproject.repository.RestaurantRepository;
-import com.gaminho.bakerproject.web.dto.CommandDTO;
-import com.gaminho.bakerproject.web.mapper.CommandMapper;
+import com.gaminho.bakerproject.service.dto.CommandDTO;
+import com.gaminho.bakerproject.service.mapper.CommandMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,11 +41,12 @@ public class CommandService {
 
     public Command saveNewCommand(CommandDTO commandDTO) {
 
-        restaurantRepository.findById(commandDTO.getRestaurantId()).orElseThrow(
+        final Restaurant restaurant = restaurantRepository.findById(commandDTO.getRestaurantId()).orElseThrow(
                 () -> new IllegalArgumentException("Can not find restaurant with id " + commandDTO.getRestaurantId()));
-
-        final Command command = commandMapper.toEntity(commandDTO);
-        return commandRepository.save(command);
+        final Command command =  commandRepository.save(commandMapper.toEntity(commandDTO));
+//        restaurant.getCommands().add(command);
+//        restaurantRepository.save(restaurant);
+        return command;
     }
 
     public Command updateCommand(CommandDTO commandDTO) {

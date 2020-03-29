@@ -2,8 +2,8 @@ package com.gaminho.bakerproject.service;
 
 import com.gaminho.bakerproject.domain.Restaurant;
 import com.gaminho.bakerproject.repository.RestaurantRepository;
-import com.gaminho.bakerproject.web.dto.RestaurantDTO;
-import com.gaminho.bakerproject.web.mapper.RestaurantMapper;
+import com.gaminho.bakerproject.service.dto.RestaurantDTO;
+import com.gaminho.bakerproject.service.mapper.RestaurantMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +27,21 @@ public class RestaurantService {
         return restaurantRepository.findAll();
     }
 
-    public Optional<Restaurant> getRestaurant(Long id) {
-        return restaurantRepository.findById(id);
+    public Optional<Restaurant> getRestaurant(Long restaurantId) {
+        return restaurantRepository.findById(restaurantId);
+    }
+
+    public void deleteRestaurant(Long restaurantId) {
+        restaurantRepository.deleteById(restaurantId);
     }
 
     public Restaurant saveNewRestaurant(RestaurantDTO restaurantDTO) {
         return restaurantRepository.save(restaurantMapper.toEntity(restaurantDTO));
+    }
+
+    public Restaurant updateRestaurant(RestaurantDTO restaurantDTO) {
+        final Restaurant restaurant = restaurantMapper.toEntity(restaurantDTO);
+        return restaurantRepository.save(restaurant);
     }
 
 }

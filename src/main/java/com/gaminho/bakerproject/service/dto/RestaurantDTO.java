@@ -1,4 +1,4 @@
-package com.gaminho.bakerproject.web.dto;
+package com.gaminho.bakerproject.service.dto;
 
 public class RestaurantDTO {
 
@@ -7,6 +7,8 @@ public class RestaurantDTO {
     private String address;
     private String mailAddress;
     private String phone;
+    private int commandCount;
+    private String description;
 
     public long getId() {
         return id;
@@ -48,6 +50,22 @@ public class RestaurantDTO {
         this.phone = phone;
     }
 
+    public int getCommandCount() {
+        return commandCount;
+    }
+
+    public void setCommandCount(int commandCount) {
+        this.commandCount = commandCount;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "RestaurantDTO{" +
@@ -56,6 +74,8 @@ public class RestaurantDTO {
                 ", address='" + address + '\'' +
                 ", mailAddress='" + mailAddress + '\'' +
                 ", phone='" + phone + '\'' +
+                ", commandCount=" + commandCount +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

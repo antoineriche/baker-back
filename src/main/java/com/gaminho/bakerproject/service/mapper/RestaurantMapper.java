@@ -1,7 +1,7 @@
-package com.gaminho.bakerproject.web.mapper;
+package com.gaminho.bakerproject.service.mapper;
 
 import com.gaminho.bakerproject.domain.Restaurant;
-import com.gaminho.bakerproject.web.dto.RestaurantDTO;
+import com.gaminho.bakerproject.service.dto.RestaurantDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -19,7 +19,8 @@ public interface RestaurantMapper {
             @Mapping(target="name", source = "restaurant.name"),
             @Mapping(target="address", source = "restaurant.address"),
             @Mapping(target="mailAddress", source = "restaurant.mailAddress"),
-            @Mapping(target="phone", source = "restaurant.phone")})
+            @Mapping(target="phone", source = "restaurant.phone"),
+            @Mapping(target="commandCount", expression="java(restaurant.getCommands().size())")})
     RestaurantDTO toDTO(Restaurant restaurant);
 
     @Mappings({

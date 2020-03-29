@@ -1,14 +1,14 @@
-package com.gaminho.bakerproject.web.mapper;
+package com.gaminho.bakerproject.service.mapper;
 
 import com.gaminho.bakerproject.domain.Command;
 import com.gaminho.bakerproject.domain.Restaurant;
-import com.gaminho.bakerproject.web.dto.CommandDTO;
+import com.gaminho.bakerproject.service.dto.CommandDTO;
 import javax.annotation.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-03-15T21:01:35+0100",
+    date = "2020-03-29T17:16:51+0200",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 1.8.0_111 (Oracle Corporation)"
 )
 @Component
