@@ -1,6 +1,5 @@
 package com.gaminho.bakerproject.web.error;
 
-import com.gaminho.bakerproject.web.controller.RestaurantController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -14,7 +13,7 @@ import org.zalando.problem.Status;
 @ControllerAdvice
 public class RestExceptionResolver {
 
-    private static final Logger log = LoggerFactory.getLogger(RestaurantController.class);
+    private static final Logger log = LoggerFactory.getLogger(RestExceptionResolver.class);
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Problem> handleError(Exception exception) {

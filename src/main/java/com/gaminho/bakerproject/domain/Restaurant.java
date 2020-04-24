@@ -18,7 +18,8 @@ public class Restaurant {
     private String description;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @Joingit ;
+    @JoinColumn(name = "fk_restaurant")
+    private Set<Command> commands = new HashSet<>();
 
     public long getId() {
         return id;
